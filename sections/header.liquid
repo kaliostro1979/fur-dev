@@ -1,0 +1,101 @@
+
+<div class="navigation-wrapper">
+    <div class="navigation-mobile__wrapper">
+        <div class="navigation-mobile__icon">
+            {% render 'mobile-navigation-icon' %}
+        </div>
+        <div class="logo">
+            <a href="/">
+                {% assign logo = section.settings.logo %}
+                {% if logo %}
+                    <img src="{{ logo | img_url: "master"}}" alt="" />
+                {% else %}
+                    <span class="shop-name">{{ shop.name }}</span>
+                {% endif %}
+            </a>
+        </div>
+        <div class="shopping-card-icon">
+            {% render 'shopping-bag' %}
+            <span class="shopping-card-icon__count">{{ cart.item_count }}</span>
+        </div>
+    </div>
+    <div class="navigation-main">
+        <div class="logo">
+            <a href="/">
+                {% assign logo = section.settings.logo %}
+                {% if logo %}
+                    <img src="{{ logo | img_url: "master"}}" alt="" />
+                {% else %}
+                    <span class="shop-name">{{ shop.name }}</span>
+                {% endif %}
+            </a>
+        </div>
+        <div class="navigation-menu_main">
+            <ul class="navigation-items__list">
+                {% for link in linklists[section.settings.menu].links %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+            </ul>
+            <div class="navigation-icons">
+                <ul>
+                    <li>
+                        <div class="search-icon">
+                            {% render 'search-icon' %}
+                        </div>
+                    </li>
+                    <li>
+                        <div class="shopping-card-icon">
+                            {% render 'shopping-bag' %}
+                            <span class="shopping-card-icon__count">{{ cart.item_count }}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<div class="mobile-menu">
+    <div class="mobile-menu__header">
+        <div class="mobile-menu__header-icon">
+            {% render 'close-icon-light' %}
+        </div>
+    </div>
+    <div class="mobile-menu-wrapper">
+        <ul class="mobile-menu-wrapper__list">
+            <li class="mobile-menu-wrapper__list-search">
+                <form>
+                    <input type="text" placeholder="Type your search">
+                    <div class="mobile-menu-wrapper__list-search-icon">
+                        <button>{% render 'search-icon-light' %}</button>
+                    </div>
+                </form>
+            </li>
+            {% for link in linklists[section.settings.menu].links %}
+                <li class="mobile-menu-wrapper__list-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+{% schema %}
+    {
+        "name": "Header",
+        "settings": [
+            {
+                "type": "link_list",
+                "id": "menu",
+                "label": "Menu",
+                "default": "main-menu"
+            },
+            {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Logo image"
+            }
+        ]
+    }
+{% endschema %}

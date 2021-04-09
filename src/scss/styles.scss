@@ -1,0 +1,33 @@
+/*
+@import 'variables';
+@import 'tools/mixins';
+@import 'font';
+
+// Core
+@import 'core/layout';
+
+// Vendors
+@import "~swiper/src/swiper";
+*/
+
+@import '~bootstrap/scss/bootstrap';
+
+
+// Templates
+@import 'global';
+@import 'components/header';
+@import 'components/product';
+@import 'media';
+@import 'components/cart-item';
+@import 'components/side-cart';
+@import 'components/item-counter';
+@import 'components/overlay';
+@import 'components/mobile-menu';
+@import 'components/catalog';
+
+
+
+
+
+
+
